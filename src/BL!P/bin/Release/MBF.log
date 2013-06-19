@@ -1,20 +1,18 @@
-MBF.IO.GenBank.GenBankParserWARN: unknown  -> BioSample: SAMN00713589
-2013-03-18 20:47:09Z: '' is not a valid header. (, data )
-MBF.IO.GenBank.GenBankParserWARN: unknown  -> BioSample: SAMN00713589
-2013-03-18 20:47:13Z: '' is not a valid header. (, data )
-MBF.IO.GenBank.GenBankParserWARN: unknown  -> Sequence Read Archive: ERS000045
-2013-03-18 20:47:13Z: '' is not a valid header. (, data )
-MBF.IO.GenBank.GenBankParserWARN: unknown  -> Sequence Read Archive: ERS000045
-2013-03-18 20:47:16Z: '' is not a valid header. (, data )
-MBF.IO.GenBank.GenBankParserWARN: unknown  -> BioSample: SRS085111
-2013-03-18 20:47:16Z: '' is not a valid header. (, data )
-MBF.IO.GenBank.GenBankParserWARN: unknown  -> BioSample: SRS085111
-2013-03-18 20:47:18Z: '' is not a valid header. (, data )
-MBF.IO.GenBank.GenBankParserWARN: unknown  -> BioSample: SRS085111
-2013-03-18 20:47:20Z: '' is not a valid header. (, data )
-MBF.IO.GenBank.GenBankParserWARN: unknown  -> BioSample: SRS085111
-2013-03-18 20:47:20Z: '' is not a valid header. (, data )
-MBF.IO.GenBank.GenBankParserWARN: unknown  -> Sequence Read Archive: ERS000045
-2013-03-18 20:47:20Z: '' is not a valid header. (, data )
-MBF.IO.GenBank.GenBankParserWARN: unknown  -> BioSample: SAMN00713589
-2013-03-18 20:47:20Z: '' is not a valid header. (, data )
+MBF.IO.GenBank.GenBankParserWARN: unknown  -> BioProject: PRJNA50635
+2013-06-07 14:52:44Z: '' is not a valid header. (, data )
+MBF.IO.GenBank.GenBankParserWARN: unknown  -> BioProject: PRJNA57779
+2013-06-07 14:52:46Z: '' is not a valid header. (, data )
+MBF.IO.GenBank.GenBankParserWARN: unknown  -> BioProject: PRJNA57779
+2013-06-07 14:52:50Z: '' is not a valid header. (, data )
+MBF.IO.GenBank.GenBankParserWARN: unknown  -> BioProject: PRJNA57779
+2013-06-07 14:52:52Z: '' is not a valid header. (, data )
+MBF.IO.GenBank.GenBankParserWARN: unknown  -> BioProject: PRJNA57779
+2013-06-07 14:52:52Z: '' is not a valid header. (, data )
+MBF.IO.GenBank.GenBankParserWARN: unknown  -> BioProject: PRJNA57779
+2013-06-07 14:52:53Z: '' is not a valid header. (, data )
+MBF.IO.GenBank.GenBankParserWARN: unknown  -> BioProject: PRJNA50635
+2013-06-07 14:52:53Z: '' is not a valid header. (, data )
+MBF.IO.GenBank.GenBankParserWARN: unknown  -> BioProject: PRJNA57779
+2013-06-07 14:52:53Z: '' is not a valid header. (, data )
+MBF.IO.GenBank.GenBankParserWARN: unknown  -> BioProject: PRJNA50635
+2013-06-07 14:52:53Z: '' is not a valid header. (, data )

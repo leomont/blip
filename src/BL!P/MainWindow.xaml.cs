@@ -8,6 +8,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Xml;
 
 using MBF;
 using MBF.IO.Fasta;
@@ -347,6 +348,7 @@ namespace Blip
                             Up.BlastMinPercentQueryCoverage
                             ));
                     */
+
                     LaunchBlastPipeline(Up.ProjectDir + "\\genes.fasta");
                     break;
                 case "UserControl5":
@@ -514,10 +516,107 @@ namespace Blip
                 JobStatus = BlastJob.BUSY,
                 Query = qp.Sequence,
                 Position = qp.Position
-
+                
             };
             return blastJob;
         }
+
+        //Created by LM on 06/06/13
+        public static void BlastSplit(XmlDocument blastfile)
+        {
+            string BlastOutput_program = blastfile.SelectSingleNode("BlastOutput/BlastOutput_program").InnerText;
+            string BlastOutput_version = blastfile.SelectSingleNode("BlastOutput/BlastOutput_version").InnerText;
+            string BlastOutput_reference = blastfile.SelectSingleNode("BlastOutput/BlastOutput_reference").InnerText;
+            string BlastOutput_db = blastfile.SelectSingleNode("BlastOutput/BlastOutput_db").InnerText;
+            string Parameters_matrix = blastfile.SelectSingleNode("BlastOutput/BlastOutput_param/Parameters/Parameters_matrix").InnerText;
+            string Parameters_expect = blastfile.SelectSingleNode("BlastOutput/BlastOutput_param/Parameters/Parameters_expect").InnerText;
+            string Parameters_gap_open = blastfile.SelectSingleNode("BlastOutput/BlastOutput_param/Parameters/Parameters_gap-open").InnerText;
+            string Parameters_gap_extend = blastfile.SelectSingleNode("BlastOutput/BlastOutput_param/Parameters/Parameters_gap-extend").InnerText;
+            string Parameters_filter = blastfile.SelectSingleNode("BlastOutput/BlastOutput_param/Parameters/Parameters_filter").InnerText;
+            XmlDocument newXmlDoc = null;
+            StreamWriter sw = null;
+            int count = 0;
+            foreach (XmlNode iterationNode in blastfile.SelectNodes("//BlastOutput/BlastOutput_iterations/Iteration"))
+            {
+                //count = count + 1;
+                newXmlDoc = new XmlDocument();
+                //this is the place where is located the input file.
+                sw = new StreamWriter("C:\\Users\\Leonardo\\Desktop\\xml_ecolibp\\" + count + ".xml");
+                sw.WriteLine(@"<?xml version=""1.0""?>");
+                sw.WriteLine(@"<!DOCTYPE BlastOutput PUBLIC ""-//NCBI//NCBI BlastOutput/EN"" ""http://www.ncbi.nlm.nih.gov/dtd/NCBI_BlastOutput.dtd"">");
+                sw.WriteLine(@"<BlastOutput>");
+                sw.WriteLine(@"  <BlastOutput_program>" + BlastOutput_program + "</BlastOutput_program>");
+                sw.WriteLine(@"  <BlastOutput_version>" + BlastOutput_version + "</BlastOutput_version>");
+                sw.WriteLine(@"  <BlastOutput_reference>" + BlastOutput_reference + "</BlastOutput_reference>");
+                sw.WriteLine(@"  <BlastOutput_db>" + BlastOutput_db + "</BlastOutput_db>");
+                /*Dinamic Params*/
+                string BlastOutput_query_ID = iterationNode.SelectSingleNode("Iteration_query-ID").InnerText;
+                sw.WriteLine(@"  <BlastOutput_query-ID>" + BlastOutput_query_ID + "</BlastOutput_query-ID>");
+                string BlastOutput_query_def = iterationNode.SelectSingleNode("Iteration_query-def").InnerText;
+                sw.WriteLine(@"  <BlastOutput_query-def>" + BlastOutput_query_def + "</BlastOutput_query-def>");
+                string BlastOutput_query_len = iterationNode.SelectSingleNode("Iteration_query-len").InnerText;
+                sw.WriteLine(@"  <BlastOutput_query-len>" + BlastOutput_query_len + "</BlastOutput_query-len>");
+                /*Dinamic Params*/
+                sw.WriteLine(@"  <BlastOutput_param>");
+                sw.WriteLine(@"    <Parameters>");
+                sw.WriteLine(@"      <Parameters_matrix>" + Parameters_matrix + "</Parameters_matrix>");
+                sw.WriteLine(@"      <Parameters_expect>" + Parameters_expect + "</Parameters_expect>");
+                sw.WriteLine(@"      <Parameters_gap-open>" + Parameters_gap_open + "</Parameters_gap-open>");
+                sw.WriteLine(@"      <Parameters_gap-extend>" + Parameters_gap_extend + "</Parameters_gap-extend>");
+                sw.WriteLine(@"      <Parameters_filter>" + Parameters_filter + "</Parameters_filter>");
+                sw.WriteLine(@"    </Parameters>");
+                sw.WriteLine(@"  </BlastOutput_param>");
+                sw.WriteLine(@"  <BlastOutput_iterations>");
+                var targetNode = newXmlDoc.ImportNode(iterationNode, true);
+                newXmlDoc.AppendChild(targetNode);
+                //newXmlDoc.Save(Console.Out);
+                newXmlDoc.Save("C:\\test" + count + ".txt");
+                string line;
+                //taked from http://support.microsoft.com/kb/816149/es
+                StreamReader sr = new StreamReader("C:\\test" + count + ".txt");
+                //Read the first line of text
+                line = sr.ReadLine();
+                //Continue to read until you reach end of file
+                while (line != null)
+                {
+                    //write the lie to console window
+                    sw.WriteLine("   " + line);
+                    //Read the next line
+                    line = sr.ReadLine();
+                }
+                //close the file
+                sr.Close();
+                sw.WriteLine(@"  </BlastOutput_iterations>");
+                sw.WriteLine(@"</BlastOutput>");
+                count = count + 1;
+                sw.Close();
+            }
+            Console.WriteLine();
+            Console.WriteLine("The process has been finished");
+            Console.ReadKey();
+        }
+
+        public static void BlastParse()
+        {
+            string[] blastxmlFile = Directory.GetFiles("C:\\Users\\leonardo.montes.CBBC.000\\Desktop\\xml_12", "*.xml");
+            foreach (string blastFile in blastxmlFile)
+            {
+                ////Parse text containing XML BLAST results into a list of SequenceSearchRecord objects.
+                BlastXmlParser blastParser = new BlastXmlParser();
+                try
+                {
+                    //A single BLAST search result. This is represented by a single XML document in BLAST XML format. It consist of some introductory information such as BLAST version, a structure listing the search parameters, and a list of Iterations (represented in the BlastSearchRecord class). 
+                    IList<BlastResult> blastResults = blastParser.Parse(blastFile);
+                    Console.WriteLine("the file: " + blastFile + "was parsed");
+                }
+                catch
+                {
+                    Console.WriteLine("cannot parse: " + blastFile);
+                }
+            }
+            Console.WriteLine("The parse process has been finished");
+        }
+
 
         /// <sumamry>
         /// This is the task for UserControl4. Runs BLAST for all the sequences in a thread. The real work is done by Blastp property.

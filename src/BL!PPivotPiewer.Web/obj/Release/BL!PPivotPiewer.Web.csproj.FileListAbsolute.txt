@@ -28,3 +28,8 @@ C:\Users\Vince\Dropbox\projects\apps\blip\BL!PPivotPiewer.Web\bin\BL!PPivotPiewe
 C:\Users\Vince\Dropbox\projects\apps\blip\BL!PPivotPiewer.Web\obj\Release\ResolveAssemblyReference.cache
 C:\Users\Vince\Dropbox\projects\apps\blip\BL!PPivotPiewer.Web\obj\Release\BL!PPivotPiewer.Web.dll
 C:\Users\Vince\Dropbox\projects\apps\blip\BL!PPivotPiewer.Web\obj\Release\BL!PPivotPiewer.Web.pdb
+C:\Users\Leonardo\Documents\Visual Studio 2010\Projects\blip-master\src\BL!PPivotPiewer.Web\bin\BL!PPivotPiewer.Web.dll
+C:\Users\Leonardo\Documents\Visual Studio 2010\Projects\blip-master\src\BL!PPivotPiewer.Web\bin\BL!PPivotPiewer.Web.pdb
+C:\Users\Leonardo\Documents\Visual Studio 2010\Projects\blip-master\src\BL!PPivotPiewer.Web\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Leonardo\Documents\Visual Studio 2010\Projects\blip-master\src\BL!PPivotPiewer.Web\obj\Release\BL!PPivotPiewer.Web.dll
+C:\Users\Leonardo\Documents\Visual Studio 2010\Projects\blip-master\src\BL!PPivotPiewer.Web\obj\Release\BL!PPivotPiewer.Web.pdb

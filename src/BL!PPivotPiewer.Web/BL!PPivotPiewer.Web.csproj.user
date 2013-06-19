@@ -22,7 +22,8 @@
           <EnableENC>False</EnableENC>
           <AlwaysStartWebServerOnDebug>True</AlwaysStartWebServerOnDebug>
           <ProjectOutputReferences>
-            <Ref Project="{D7B2B930-E47A-4276-B6FA-C5FD0F84BE2A}" Folder="ClientBin">BL!PPivotPiewer.xap</Ref>
+            <Ref Project="{D7B2B930-E47A-4276-B6FA-C5FD0F84BE2A}" Folder="ClientBin">
+            </Ref>
           </ProjectOutputReferences>
         </WebProjectProperties>
       </FlavorProperties>
