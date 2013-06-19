@@ -54,4 +54,4 @@ Developers
 
 **Vince Forgetta**, _Postdoctoral Researcher, McGill University_
 
-**Leonardo Montes Marin**, _Ingeniero Investigador en Centro de Bioinformática y Biología Computacional de Colombia_
+**Leonardo Montes Marin**, _Research Engineer, Center for Bioinformatics and Computational Biology Colombia_
